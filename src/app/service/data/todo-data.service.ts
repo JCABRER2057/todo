@@ -27,4 +27,10 @@ export class TodoDataService {
       `http://localhost:8080/users/${username}/todos/${todoId}`
     );
   }
+  updateTodo(username: string, todoId: number, todo: Todo): Observable<Todo> {
+    return this.http.put<Todo>(
+      `http://localhost:8080/users/${username}/todos/${todoId}`,
+      todo
+    );
+  }
 }

@@ -24,4 +24,10 @@ export class TodoComponent implements OnInit {
       .retrieveTodo('in28minutes', this.todoId)
       .subscribe((data) => (this.todo = data));
   }
+
+  saveTodo() {
+    this.todoService
+      .updateTodo('in28minutes', this.todoId, this.todo)
+      .subscribe((data) => console.log('saved'));
+  }
 }
