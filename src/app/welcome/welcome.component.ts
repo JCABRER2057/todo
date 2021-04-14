@@ -25,35 +25,31 @@ export class WelcomeComponent implements OnInit {
     this.name = this.route.snapshot.params.name;
   }
 
-  getWelcomeMessage(): void{
+  getWelcomeMessage(): void {
     // console.log(this.service.executeHelloWorldBeanService());
     // *It is an observable then we need to subscribe.
-    this.service
-      .executeHelloWorldBeanService()
-      .subscribe((
-        response) => this.handleSuccessfulResponse(response),
-        error => this.handleErrorResponse(error)
-      );
+    this.service.executeHelloWorldBeanService().subscribe(
+      (response) => this.handleSuccessfulResponse(response),
+      (error) => this.handleErrorResponse(error)
+    );
   }
 
-  getWelcomeMessageWithParameter(): void{
+  getWelcomeMessageWithParameter(): void {
     // console.log(this.service.executeHelloWorldBeanService());
     // *It is an observable then we need to subscribe.
     this.service
       .executeHelloWorldBeanServiceWithPathVariable(this.name)
-      .subscribe((
-        response) => this.handleSuccessfulResponse(response),
-        error => this.handleErrorResponse(error)
+      .subscribe(
+        (response) => this.handleSuccessfulResponse(response),
+        (error) => this.handleErrorResponse(error)
       );
   }
-
 
   handleSuccessfulResponse(response: HelloWorldBean): void {
     this.welcomeMessageFrom = response.message;
     // console.log(response.message);
   }
-  handleErrorResponse(error: any): void{
+  handleErrorResponse(error: any): void {
     this.welcomeMessageFrom = error.error.message;
-
   }
 }

@@ -16,11 +16,12 @@ export class TodoComponent implements OnInit {
     private todoService: TodoDataService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    this.todo = new Todo(this.todoId, '', false, new Date());
+  }
 
   ngOnInit(): void {
     this.todoId = this.route.snapshot.params.id;
-    this.todo = new Todo(this.todoId, '', false, new Date());
 
     if (this.todoId != -1) {
       this.todoService
@@ -29,7 +30,7 @@ export class TodoComponent implements OnInit {
     }
   }
 
-  saveTodo() {
+  saveTodo(): void {
     if (this.todoId == -1) {
       // * Create todo
       this.todoService
